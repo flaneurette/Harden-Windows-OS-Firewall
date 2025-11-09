@@ -136,8 +136,6 @@ $remoteAccessPatterns = @(
 Write-Host "Do you EVER use remote access to this computer?" -ForegroundColor Yellow
 Write-Host "(Remote Desktop, TeamViewer, VNC, Windows Remote Management, etc.)" -ForegroundColor Yellow
 Write-Host ""
-Write-Host "NOTE: You have Tailscale installed which is a safer alternative!" -ForegroundColor Cyan
-Write-Host ""
 Write-Host "Disable remote access features? (Y/N): " -NoNewline -ForegroundColor Yellow
 $response = Read-Host
 
@@ -247,6 +245,7 @@ $response = Read-Host
 if ($response -eq "N" -or $response -eq "n") {
     $mediaRules = Get-NetFirewallRule | Where-Object { 
         $_.DisplayName -like "*Windows Mediaspeler*" -or 
+        $_.DisplayName -like "*Windows Mediaplayer*" -or 
         $_.DisplayName -like "*Media Center*" 
     }
     if ($mediaRules) {
@@ -281,6 +280,11 @@ if ($response -eq "N" -or $response -eq "n") {
     if ($fileShareRules) {
         $fileShareRules | Disable-NetFirewallRule
         Write-Host "  OK Disabled File and Printer Sharing ($($fileShareRules.Count) rules)" -ForegroundColor Green
+    }
+    $fileShareRules1 = Get-NetFirewallRule -DisplayGroup "File and printer sharing" -ErrorAction SilentlyContinue
+    if ($fileShareRule1s) {
+        $fileShareRules1 | Disable-NetFirewallRule
+        Write-Host "  OK Disabled File and Printer Sharing ($($fileShareRules1.Count) rules)" -ForegroundColor Green
     }
 } else {
     Write-Host "  INFO Keeping File and Printer Sharing enabled" -ForegroundColor Cyan
