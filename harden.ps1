@@ -410,9 +410,13 @@ if ($securityRules) {
     $securityRules | Set-NetFirewallRule -Enabled True
     Write-Host "  OK Windows Security rules are enabled (CRITICAL)" -ForegroundColor Green
 }
-
+$securityRules1 = Get-NetFirewallRule | Where-Object { $_.DisplayName -like "*Windows-security*" }
+if ($securityRules1) {
+    $securityRules1 | Set-NetFirewallRule -Enabled True
+    Write-Host "  OK Windows Security rules are enabled (CRITICAL)" -ForegroundColor Green
+}
 Write-Host ""
-Write-Host "Ensuring Tailscale can communicate..." -ForegroundColor Yellow
+Write-Host "Ensuring Tailscale can communicate... (if you have it)" -ForegroundColor Yellow
 $tailscaleRules = Get-NetFirewallRule | Where-Object { $_.DisplayName -like "*Tailscale*" }
 if ($tailscaleRules) {
     $tailscaleRules | Set-NetFirewallRule -Enabled True
