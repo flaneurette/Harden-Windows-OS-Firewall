@@ -50,33 +50,37 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
 $criticalBlockPorts = @(
-    # TCP Ports
-    @{Port=21; Protocol="TCP"; Name="Block TCP 21"; Description="FTP - unused"},
-    @{Port=23; Protocol="TCP"; Name="Block TCP 23"; Description="Telnet - unused"},
-    @{Port=135; Protocol="TCP"; Name="Block TCP 135"; Description="RPC - ransomware target"},
-    @{Port=139; Protocol="TCP"; Name="Block TCP 139"; Description="NetBIOS/SMB"},
-    @{Port=445; Protocol="TCP"; Name="Block TCP 445"; Description="SMB - WannaCry/NotPetya target"},
-    @{Port=5357; Protocol="TCP"; Name="Block TCP 5357"; Description="WSDAPI - Web Services Discovery"},
-    
-    # UDP Ports
-    @{Port=53; Protocol="UDP"; Name="Block UDP 53"; Description="DNS - prevent amplification (optional)"},
-    @{Port=69; Protocol="UDP"; Name="Block UDP 69"; Description="TFTP - trivial file transfer"},
-    @{Port=111; Protocol="UDP"; Name="Block UDP 111"; Description="RPC Portmapper/NFS attacks"},
-    @{Port=123; Protocol="UDP"; Name="Block UDP 123"; Description="NTP - DDoS amplification"},
-    @{Port=137; Protocol="UDP"; Name="Block UDP 137"; Description="NetBIOS Name Service"},
-    @{Port=138; Protocol="UDP"; Name="Block UDP 138"; Description="NetBIOS Datagram Service"},
-    @{Port=161; Protocol="UDP"; Name="Block UDP 161"; Description="SNMP - rarely used"},
-    @{Port=189; Protocol="UDP"; Name="Block UDP 189"; Description="Optional legacy service"},
-    @{Port=389; Protocol="UDP"; Name="Block UDP 389"; Description="LDAP - directory service"},
-    @{Port=500; Protocol="UDP"; Name="Block UDP 500"; Description="IPSec VPN (IKEv1)"},
-    @{Port=636; Protocol="UDP"; Name="Block UDP 636"; Description="LDAPS"},
-    @{Port=1194; Protocol="UDP"; Name="Block UDP 1194"; Description="OpenVPN (optional)"},
-    @{Port=1900; Protocol="UDP"; Name="Block UDP 1900"; Description="SSDP - UPnP Discovery"},
-    @{Port=2049; Protocol="UDP"; Name="Block UDP 2049"; Description="NFS - Network File System"},
-    @{Port=3702; Protocol="UDP"; Name="Block UDP 3702"; Description="WS-Discovery"},
-    @{Port=4500; Protocol="UDP"; Name="Block UDP 4500"; Description="IPSec NAT Traversal"},
-    @{Port=5353; Protocol="UDP"; Name="Block UDP 5353"; Description="mDNS - Bonjour"},
-    @{Port=5355; Protocol="UDP"; Name="Block UDP 5355"; Description="LLMNR - credential theft"}
+	@{Port=21; Protocol="TCP"; Name="Block TCP 21"; Description="FTP - unused"},
+	@{Port=23; Protocol="TCP"; Name="Block TCP 23"; Description="Telnet - unused"},
+	@{Port=135; Protocol="TCP"; Name="Block TCP 135"; Description="RPC - ransomware target"},
+	@{Port=139; Protocol="TCP"; Name="Block TCP 139"; Description="NetBIOS Session Service / legacy SMB"},
+	@{Port=445; Protocol="TCP"; Name="Block TCP 445"; Description="SMB / CIFS Wannacry etc. - ransomware target"},
+	@{Port=593; Protocol="TCP"; Name="Block TCP 593"; Description="RPC over HTTP / optional"},
+	@{Port=3389; Protocol="TCP"; Name="Block TCP 3389"; Description="Remote Desktop (RDP)"},
+	@{Port=5357; Protocol="TCP"; Name="Block TCP 5357"; Description="WSDAPI - Web Services Discovery"},
+	@{Port=5900; Protocol="TCP"; Name="Block TCP 5900"; Description="VNC - remote desktop"},
+	@{Port=5985; Protocol="TCP"; Name="Block TCP 5985"; Description="WinRM HTTP"},
+	@{Port=5986; Protocol="TCP"; Name="Block TCP 5986"; Description="WinRM HTTPS"},
+
+	@{Port=53; Protocol="UDP"; Name="Block UDP 53"; Description="DNS - inbound (only if not running DNS locally)"},
+	@{Port=69; Protocol="UDP"; Name="Block UDP 69"; Description="TFTP - trivial file transfer"},
+	@{Port=111; Protocol="UDP"; Name="Block UDP 111"; Description="rpcbind/portmapper (NFS/RPC)"},
+	@{Port=123; Protocol="UDP"; Name="Block UDP 123"; Description="NTP - DDoS amplification (inbound)"},
+	@{Port=137; Protocol="UDP"; Name="Block UDP 137"; Description="NetBIOS Name Service"},
+	@{Port=138; Protocol="UDP"; Name="Block UDP 138"; Description="NetBIOS Datagram Service"},
+	@{Port=161; Protocol="UDP"; Name="Block UDP 161"; Description="SNMP - management protocol"},
+	@{Port=162; Protocol="UDP"; Name="Block UDP 162"; Description="SNMP Trap - management protocol"},
+	@{Port=189; Protocol="UDP"; Name="Block UDP 189"; Description="Legacy / rarely used (optional)"},
+	@{Port=389; Protocol="TCP"; Name="Block TCP 389"; Description="LDAP - directory service"},
+	@{Port=500; Protocol="UDP"; Name="Block UDP 500"; Description="IPSec VPN (IKEv1)"},
+	@{Port=636; Protocol="TCP"; Name="Block TCP 636"; Description="LDAPS"},
+	@{Port=1194; Protocol="UDP"; Name="Block UDP 1194"; Description="OpenVPN (optional)"},
+	@{Port=1900; Protocol="UDP"; Name="Block UDP 1900"; Description="SSDP / UPnP Discovery"},
+	@{Port=2049; Protocol="UDP"; Name="Block UDP 2049"; Description="NFS - Network File System"},
+	@{Port=3702; Protocol="UDP"; Name="Block UDP 3702"; Description="WS-Discovery"},
+	@{Port=4500; Protocol="UDP"; Name="Block UDP 4500"; Description="IPSec NAT Traversal"},
+	@{Port=5353; Protocol="UDP"; Name="Block UDP 5353"; Description="mDNS - Bonjour"},
+	@{Port=5355; Protocol="UDP"; Name="Block UDP 5355"; Description="LLMNR - credential theft"}
 )
 
 Write-Host "Enabling critical port blocks across ALL profiles..." -ForegroundColor Yellow
