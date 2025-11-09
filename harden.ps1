@@ -201,7 +201,13 @@ $autoDisableApps = @(
     "*Films en tv*",                 # Movies & TV
     "*Windows-klok*",                # Clock/Alarms
     "*Account voor werk of school*", # Work/School Account
-    "*Bureaublad app webviewer*"     # Desktop App Web Viewer
+    "*Bureaublad app webviewer*",     # Desktop App Web Viewer
+    "*Feedback Hub*",                    # Feedback Hub - Microsoft telemetry
+    "*Solitaire game*",                   # Solitaire game
+    "*Movies & TV*",                 # Movies & TV
+    "*Clock/Alarms*",                # Clock/Alarms
+    "*School Account*", # Work/School Account
+    "*Desktop App Web Viewer*"     # Desktop App Web Viewer
 )
 
 $appDisabledCount = 0
