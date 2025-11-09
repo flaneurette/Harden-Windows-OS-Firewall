@@ -4,4 +4,3 @@ A Powershell script that hardens firewall rules for Windows OS, and disables man
 Run this command in Windows Powershell (as administrator), navigate to the location of the harden.ps1 file and type: 
 
 > powershell -ExecutionPolicy Bypass -File .\harden.ps1
-
