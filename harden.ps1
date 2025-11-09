@@ -120,6 +120,14 @@ $remoteAccessPatterns = @(
     "*Extern beheer van geplande taken*",  # Remote Scheduled Tasks
     "*Extern beheer van Windows Defender Firewall*",  # Remote Firewall Management
     "*Extern afsluiten*",           # Remote Shutdown
+    "*Remote Assistance*",           # Remote Assistance
+    "*Remote Desktop*",          # Remote Desktop
+    "*Remote Service Management*",       # Remote Service Management
+    "*Remote Event Log Management*",    # Remote Event Log Management
+    "*Remote Volume Management*",        # Remote Volume Management
+    "*Remote Scheduled Tasks*",  # Remote Scheduled Tasks
+    "*Remote Firewall Management*",  # Remote Firewall Management
+    "*Remote Shutdown*",           # Remote Shutdown
     "*Windows Remote Management*"   # WinRM
 )
 
