@@ -47,7 +47,7 @@ Making it **impossible** for anyone to connect to your PC.
 
 - That said, if you install malware (by opening attachments or installers), this will not be of any benefit. (your own fault then).
 
-- Never open stuff immediately. Use **multiple** anti-virus software (at least 2 or 3 as not all AV sofwatre can detect everything).
+- Never open stuff immediately. Use **multiple** anti-virus software (at least 2 or 3 as not all AV sofware can detect everything).
   
 - Then, for the final arbiter, use https://www.virustotal.com to scan an app for free.
 
