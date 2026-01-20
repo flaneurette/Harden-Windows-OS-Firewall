@@ -12,7 +12,7 @@ By default, Windows OS allows many incoming services to connect to **any** port 
 
 You can close 95-98% of **all incoming services or ports** it will not affect your system whatsoever.
 
-If you do this, your Windows machine becomes basically unreabale from outside. (=what we want for strong security)
+If you do this, your Windows machine becomes basically unreadable from outside. (=what we want for strong security)
 
 1. Presse Win key (windows symbols) + R key
 2. Type: firewall.cpl
@@ -33,11 +33,11 @@ Select **ALL** incoming rules, **except** for these blocks:
 - WFD ASP Coordination
 - WFD Driver-only.
 
-When all othera are selected, right-click: **Disable Rule** 
+When all others are selected, right-click: **Disable Rule(s)** 
 
 This should lock down **ALL** incomming requests. (you don't need them)
 
-Later on, when a service does complain, you could explicity allow the service by opening the firewall again. (never happend to me, though)
+Later on, when a service does complain, you could explicity allow the service by opening the firewall again. (never happened to me, though)
 
 ### Test it.
 
