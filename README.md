@@ -26,7 +26,7 @@ Then: Click **inbound rules** in left menu.
 
 Select **ALL** incoming rules, **except** for these blocks:
 
-- Full list: Block <port no.> (Only present if you followed previous advice)
+- Full list: Block `<port no.>` (Only present if you followed previous advice)
 - Full list: Core Networking
 - Full list: Network discovery
 - Full list: Tailscale (or other VPN if you run it)
