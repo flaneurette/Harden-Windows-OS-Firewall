@@ -17,7 +17,7 @@ If you do this, your Windows machine becomes basically unreadable from outside. 
 1. Presse Win key (windows symbols) + R key
 2. Type: firewall.cpl
 3. Click on "advanced settings"
-4. Right the first item in the left bar: Windows Defender Firewall with advanced security blah. blah.
+4. Right-click the first item in the left bar: Windows Defender Firewall with advanced security, blah. blah.
 5. Click properties
 6. At firewall state -> inbound connections, set it to BLOCK.
 7. Close dialog
