@@ -8,6 +8,8 @@ Run this command in Windows Powershell (as administrator), navigate to the locat
 
 # More security
 
+> TIP: This is especially effective on public (untrusted) networks. Have a spare notebook, with all incomming ports closed when using public networks. Also, for office/LAN security, this is excellent practice. It prevents attacks from compromising an antire network or subnet. (very wanted by attackers)
+
 By default, Windows OS allows many incoming services to connect to **any** port from **any** destination. This is very **bad/lazy** security practice. Most people have dozens of open ports on their Windows machine, by **default**.
 
 You can close 95-98% of **all incoming services or ports** it will not affect your system whatsoever.
