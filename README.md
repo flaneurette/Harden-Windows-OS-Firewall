@@ -32,7 +32,7 @@ Select **ALL** incoming rules, **except** for these blocks:
 - Full list: Tailscale (or other VPN if you run it)
 - WFD ASP Coordination
 - WFD Driver-only.
-- Some Wi-Fi rules (don't de-select if you run cabled ethernet = more secure)
+- Some Wi-Fi rules (don't de-select if you don't run cabled ethernet = more secure)
 
 When all others are selected, right-click: **Disable Rule(s)** 
 
