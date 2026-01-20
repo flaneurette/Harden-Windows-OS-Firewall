@@ -35,7 +35,7 @@ Select **ALL** incoming rules, **except** for these blocks:
 
 When all others are selected, right-click: **Disable Rule(s)** 
 
-This should lock down **ALL** incomming requests. (you don't need them)
+This should lock down **ALL** incoming requests. (you don't need them)
 
 Later on, when a service does complain, you could explicity allow the service by opening the firewall again. (never happened to me, though)
 
