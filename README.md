@@ -41,7 +41,7 @@ Later on, when a service does complain, you could explicity allow the service by
 
 ### Test it.
 
-Get a **free LAN scanner app** on Google play, and test your local LAN network. Select your PC IP and scan it. All 655500 ports should basically be closed, or unreachable by now.
+Get a **free LAN scanner app** on Google play, and test your local LAN network. Select your PC IP and scan it. All 65550 ports should basically be closed, or unreachable by now.
 
 Making it **impossible** for anyone to connect to your PC.
 
