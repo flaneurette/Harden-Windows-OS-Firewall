@@ -79,7 +79,6 @@ foreach ($svc in $services) {
 }
 ```
 
-
 It's best to use entire disk encryption. But we can laos do the following as extra measures.
 
 Run these commands in `elevated cmd`:
@@ -116,7 +115,7 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\M
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Value 1
 ```
 
-Also, save attached `cleanup.ps1` script to C:\
+Also, save attached `cleanup.ps1` script to `C:\`
 
 And enable it on PC logoff. In PowerShell (ISE is better for this) as admin:
 
