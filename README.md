@@ -137,6 +137,4 @@ Register-ScheduledTask -TaskName "SecurityCleanup" `
     -Action $Action -Trigger @($Trigger1, $Trigger2) `
     -Settings $Settings -Principal $Principal `
     -Description "Deep cleanup daily + on boot" -Force
-
-Write-Host "Task created - runs daily 3AM + every startup" -ForegroundColor Green
 ```
