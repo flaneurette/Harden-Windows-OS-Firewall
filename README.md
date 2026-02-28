@@ -57,6 +57,86 @@ Making it **impossible** for anyone to connect to your PC.
 - Then run the software in **Sandboxy Plus** to test it, and restrict internet access to it, and write permissions.
 
   If you follow **all** these steps, you will likely never have a compromised machine.
+  
+  
+### Extra
+
+Disable services. Open powershell as admin and paste:
+
+```
+$services = @(
+    'DiagTrack','whesvc','InventorySvc','DoSvc','SharedAccess',
+    'lfsvc','lmhosts','TrkWks','PcaSvc','RmSvc',
+    'PolicyAgent','IKEEXT','Spooler',
+    'IJPLMSVC','StiSvc','SysMain','WSearch','VSStandardCollectorService',
+    'WSAIFabricSvc','HvHost','nvagent','hns'
+)
+
+foreach ($svc in $services) {
+    Stop-Service -Name $svc -Force -ErrorAction SilentlyContinue
+    Set-Service -Name $svc -StartupType Disabled
+    Write-Host "Stopped & Disabled: $svc" -ForegroundColor Green
+}
+```
 
 
+### Extra tips
 
+Run these commands in elevated cmd:
+
+Ecrypt pagefile:
+
+```
+fsutil behavior set encryptpagingfile 1
+```
+
+Prevent hybernate leaks
+
+```
+powercfg /hibernate off
+```
+
+In Powershell run these commands:
+
+```
+# Disable Prefetch permanently
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" -Name "EnablePrefetcher" -Value 0
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" -Name "EnableSuperfetch" -Value 0
+
+# Disable Windows Activity/Timeline History
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableActivityFeed" -Value 0 -Force
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "PublishUserActivities" -Value 0 -Force
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "UploadUserActivities" -Value 0 -Force
+
+
+# Disable User Access Logging
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "ClearPageFileAtShutdown" -Value 1
+
+# Disable Error Reporting
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Value 1
+```
+
+Also, save attached script to C:\ `cleanup.ps1`
+
+And enable it on PC logoff. In PowerShell (ISE is better for this) as admin:
+
+```
+# Daily scheduled cleanup at 3AM + on startup as backup
+$Action = New-ScheduledTaskAction -Execute "powershell.exe" `
+    -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Scripts\cleanup.ps1"
+
+$Trigger1 = New-ScheduledTaskTrigger -Daily -At "3:00AM"
+$Trigger2 = New-ScheduledTaskTrigger -AtStartup
+
+$Principal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -RunLevel Highest
+
+$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries `
+    -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Minutes 10)
+
+Register-ScheduledTask -TaskName "SecurityCleanup" `
+    -Action $Action -Trigger @($Trigger1, $Trigger2) `
+    -Settings $Settings -Principal $Principal `
+    -Description "Deep cleanup daily + on boot" -Force
+
+Write-Host "Task created - runs daily 3AM + every startup" -ForegroundColor Green
+```
