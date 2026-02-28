@@ -91,7 +91,7 @@ Ecrypt pagefile:
 fsutil behavior set encryptpagingfile 1
 ```
 
-Prevent hybernate leaks
+Prevent hibernate leaks
 
 ```
 powercfg /hibernate off
