@@ -125,7 +125,7 @@ And enable it on PC logoff. In PowerShell (ISE is better for this) as admin:
 $Action = New-ScheduledTaskAction -Execute "powershell.exe" `
     -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Scripts\cleanup.ps1"
 
-$Trigger1 = New-ScheduledTaskTrigger -Daily -At "3:00AM"
+$Trigger1 = New-ScheduledTaskTrigger -Daily -At "3:00PM"
 $Trigger2 = New-ScheduledTaskTrigger -AtStartup
 
 $Principal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -RunLevel Highest
