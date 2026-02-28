@@ -59,9 +59,9 @@ Making it **impossible** for anyone to connect to your PC.
   If you follow **all** these steps, you will likely never have a compromised machine.
   
   
-### Extra
+### Extra tips
 
-Disable services. Open powershell as admin and paste:
+Disable phone-home services. Open `powershell` as admin and paste:
 
 ```
 $services = @(
@@ -79,8 +79,6 @@ foreach ($svc in $services) {
 }
 ```
 
-
-### Extra tips
 
 It's best to use entire disk encryption. But we can laos do the following as extra measures.
 
