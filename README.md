@@ -122,7 +122,7 @@ Also, save attached `cleanup.ps1` script to `C:\`
 And enable it on PC logoff. In PowerShell (ISE is better for this) as admin:
 
 ```
-# Daily scheduled cleanup at 3AM + on startup as backup
+# Daily scheduled cleanup at 3PM + on startup as backup
 $Action = New-ScheduledTaskAction -Execute "powershell.exe" `
     -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File C:\cleanup.ps1"
 
