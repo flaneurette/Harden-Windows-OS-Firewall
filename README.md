@@ -82,7 +82,9 @@ foreach ($svc in $services) {
 
 ### Extra tips
 
-Run these commands in elevated cmd:
+It's best to use entire disk encryption. But we can laos do the following as extra measures.
+
+Run these commands in `elevated cmd`:
 
 Ecrypt pagefile:
 
@@ -96,7 +98,7 @@ Prevent hybernate leaks
 powercfg /hibernate off
 ```
 
-In Powershell run these commands:
+In elevated `Powershell` run these commands:
 
 ```
 # Disable Prefetch permanently
@@ -116,14 +118,14 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\M
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Value 1
 ```
 
-Also, save attached script to C:\ `cleanup.ps1`
+Also, save attached `cleanup.ps1` script to C:\
 
 And enable it on PC logoff. In PowerShell (ISE is better for this) as admin:
 
 ```
 # Daily scheduled cleanup at 3AM + on startup as backup
 $Action = New-ScheduledTaskAction -Execute "powershell.exe" `
-    -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Scripts\cleanup.ps1"
+    -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File C:\cleanup.ps1"
 
 $Trigger1 = New-ScheduledTaskTrigger -Daily -At "3:00PM"
 $Trigger2 = New-ScheduledTaskTrigger -AtStartup
