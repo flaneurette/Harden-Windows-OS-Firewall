@@ -79,7 +79,9 @@ foreach ($svc in $services) {
 }
 ```
 
-It's best to use entire disk encryption. But we can laos do the following as extra measures.
+### More
+
+It's also best to use entire disk encryption for many reasons. But we can also do the following as extra measures.
 
 Run these commands in `elevated cmd`:
 
