@@ -99,6 +99,12 @@ sc stop WpnUserService
 sc config WpnUserService start=disabled
 ```
 
+Disable WebView2 runtime phoning home via registry
+
+```
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Edge\WebView2" /v "AutoUpdateCheckPeriodMinutes" /t REG_DWORD /d 0 /f
+```
+
 ### More
 
 It's also best to use entire disk encryption for many reasons. But we can also do the following as extra measures.
