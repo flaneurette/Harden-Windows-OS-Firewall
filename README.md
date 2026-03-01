@@ -89,6 +89,16 @@ foreach ($svc in $services) {
 }
 ```
 
+Disable WpnService.
+
+```
+sc stop WpnService
+sc config WpnService start=disabled
+
+sc stop WpnUserService
+sc config WpnUserService start=disabled
+```
+
 ### More
 
 It's also best to use entire disk encryption for many reasons. But we can also do the following as extra measures.
